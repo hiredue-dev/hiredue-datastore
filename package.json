@@ -1,0 +1,53 @@
+{
+  "name": "@hiredue-org/datastore",
+  "version": "1.0.0",
+  "description": "Composable persistent, transient, and secure data stores for Node.js",
+  "main": "index.cjs",
+  "exports": {
+    ".": {
+      "require": "./index.cjs",
+      "default": "./index.cjs"
+    },
+    "./store": "./store.cjs",
+    "./storeConfig": "./storeConfig.cjs",
+    "./persistent": "./persistentStore.cjs",
+    "./transient": "./transientStore.cjs",
+    "./secure": "./secureStore.cjs"
+  },
+  "files": [
+    "index.cjs",
+    "store.cjs",
+    "storeConfig.cjs",
+    "persistentStore.cjs",
+    "transientStore.cjs",
+    "secureStore.cjs",
+    "readme.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node -e \"require('./index.cjs')\"",
+    "prepublishOnly": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiredue-dev/hiredue-datastore.git"
+  },
+  "keywords": [
+    "cache",
+    "storage",
+    "node",
+    "keytar",
+    "node-persist"
+  ],
+  "author": "Hiredue-org",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hiredue-dev/hiredue-datastore/issues"
+  },
+  "homepage": "https://github.com/hiredue-dev/hiredue-datastore#readme",
+  "dependencies": {
+    "keytar": "^7.9.0",
+    "node-cache": "^5.1.2",
+    "node-persist": "^4.0.4"
+  }
+}
