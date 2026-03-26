@@ -63,9 +63,6 @@ class Store {
     }
     return Store.#storeConfig;
   }
-  getUserId() {
-    return Store.getStoreConfig().getUserId();
-  }
 
   isLoggingEnabled() {
     return Store.getStoreConfig().isLoggingEnabled();
