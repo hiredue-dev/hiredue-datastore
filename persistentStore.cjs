@@ -3,23 +3,12 @@ const { Store } = require("./store.cjs");
 const log = Store.getLoggerProxy();
 
 class PersistentStore extends Store {
-  static #instance;
   #store;
 
   constructor() {
-    if (PersistentStore.#instance) {
-      return PersistentStore.#instance;
-    }
     super();
-    PersistentStore.#instance = this;
   }
 
-  static getInstance() {
-    if (!PersistentStore.#instance) {
-      PersistentStore.#instance = new PersistentStore();
-    }
-    return PersistentStore.#instance;
-  }
   async init(config) {
     try {
       await persist.init(config);

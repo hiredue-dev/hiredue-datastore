@@ -2,22 +2,11 @@ const NodeCache = require( "node-cache" );
 const { Store } = require( "./store.cjs" );
 const log = Store.getLoggerProxy();
 class TransientStore extends Store {
-    static #instance;
     #cache;
     #ttl = 1200;
     constructor(){ 
-        if(TransientStore.#instance){
-            return TransientStore.#instance;
-        }
         super();
         this.#cache = new NodeCache();
-        TransientStore.#instance = this;
-    }
-    static getInstance() {
-        if (!TransientStore.#instance) {
-            TransientStore.#instance = new TransientStore();
-        }
-        return TransientStore.#instance;
     }
     init(config){
         try {

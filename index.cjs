@@ -6,15 +6,17 @@ class DataStore {
   persistent;
   secure;
   transient;  
+	constructor() {
+      this.persistent = new PersistentStore();
+      this.transient = new TransientStore();
+      this.secure = new SecureStore();
+	}
   async init(config = {}) {
     try {
       Store.initializeConfig(config.store || {});
-      this.persistent = PersistentStore.getInstance();
-      this.transient = TransientStore.getInstance();
-      this.secure = SecureStore.getInstance();
+      this.transient.init(config.transient || {});
+      this.secure.init(config.secure || {});
       await this.persistent.init(config.persistent || {});
-      await this.transient.init(config.transient || {});
-      await this.secure.init(config.secure || {});
     } catch (error) {
       throw error;
     }
