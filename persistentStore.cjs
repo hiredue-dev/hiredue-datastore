@@ -1,4 +1,4 @@
-const persist = require("node-persist");
+const storage = require("node-persist");
 const { Store } = require("./store.cjs");
 const log = Store.getLoggerProxy();
 
@@ -11,7 +11,8 @@ class PersistentStore extends Store {
 
   async init(config) {
     try {
-      await persist.init(config);
+      const persist = storage.create(config);
+			await persist.init();
       this.#store = persist;
       log.info("PersistentStore initialized", { dir: config && config.dir ? config.dir : undefined });
     } catch (error) {
