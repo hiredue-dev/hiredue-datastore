@@ -3,22 +3,11 @@ const { Store } = require("./store.cjs");
 const log = Store.getLoggerProxy();
 
 class SecureStore extends Store {
-  static #instance;
   #SERVICE_NAME = '';
   constructor() {
-    if (SecureStore.#instance) {
-      return SecureStore.#instance;
-    }
     super();
-    SecureStore.#instance = this;
   }
 
-  static getInstance() {
-    if (!SecureStore.#instance) {
-      SecureStore.#instance = new SecureStore();
-    }
-    return SecureStore.#instance;
-  }
   init(config) {
     try {
       if (config.serviceName) this.#SERVICE_NAME = config.serviceName;
